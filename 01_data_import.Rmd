@@ -7,6 +7,8 @@ thie file is for doing data import
 
 ```{r}
 library(tidyverse)
+library(readxl)
+library(haven)
 ```
 import our first dataset
 ```{r}
@@ -45,4 +47,45 @@ skimr::skim(pups_df)
 ```
 viewing? 
 
+
+## oh excel..
+
+jenny bryan made 'readxl" to solve our problems
+```{r}
+mlb_df = 
+  read_excel("data/mlb11.xlsx")
+```
+look at the data!
+```{r}
+mlb_df
+```
+
+import FOTR words
+
+```{r}
+fotr_df = 
+  read_excel(
+    "data/LotR_Words.xlsx",
+    range = "B3:D6"
+  )
+
+```
+
+Two towers
+```{r}
+tt_df = 
+  read_excel(
+    "data/LotR_Words.xlsx",
+    range = "f3:H6"
+  )
+```
+
+## import sas
+
+read in the PULSE dataset
+```{r}
+pulse_df = 
+  read_sas("data/public_pulse_data.sas7bdat")
+pulse_df = janitor::clean_names(pulse_df)
+```
 
